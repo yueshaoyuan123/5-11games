@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            height: 5000px;
+        }
+       #box{
+           width: 30px;
+           background-color: orange;
+           text-align: center;
+           position: fixed;
+           top: 500px;
+           right: 30px;
+           display: none;
+           user-select: none;
+          
+       }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+    ^ 返回顶部
+    
+    </div>
+    <script>
+    //获取dom
+    var box = document.getElementById('box');//div
+    //箭头浏览器的滚动事件
+    window.onscroll = function(){
+     //获取当前位置到顶部的距离
+     var scrollDistance = document.documentElement.scrollTop;
+     //判断到顶部的距离是否大于1000
+     if(scrollDistance>1000){
+         box.style.display = 'block';//大于就显示
+     }else{
+         box.style.display = 'none';//小于就隐藏
+     }
+    }
+    //给div添加点击事件
+    box.addEventListener('click',function(){
+        //添加一个定时器
+      var timer= setInterval(function(){
+            document.documentElement.scrollTop -=100; //自减
+           if(document.documentElement.scrollTop<=0){//判断是否已经回到顶部
+               //清除定时器
+               clearInterval(timer);
+           }
+        })
+    
+    })
+    console.log(box)
+    
+    
+    
+    </script>
+</body>
+</html>

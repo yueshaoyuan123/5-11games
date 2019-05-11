@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    
+    #box{
+        width: 100px;
+        height: 150px;
+        background-color: red;
+        position: absolute;
+        top: 200px;
+        left: -100px;
+    }
+    span{
+        width: 30px;
+        height: 90px;
+        background: green;
+        text-align: center;
+        color: #fff;
+
+        position: absolute;
+        top: 30px;
+        right: -30px;
+    }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span>点击分享</span>
+    </div>
+    <script>
+    //获取dom
+    var  box = document.getElementById('box');
+    //添加鼠标移动事件
+    box.addEventListener('mouseover',function(){
+        //调用运动函数  移出 -100===》0
+        move(this,0);
+    })
+    box.addEventListener('mouseout',function(){
+        //调用运动函数  移进  0===》-100
+        move(this,-100);
+    })
+    var timer = null;
+   function move(dom,target){
+       clearInterval(timer)
+       var speed = 10;
+       if(dom.offsetLeft>target){
+           speed = -10;
+       }
+      timer = setInterval(function(){
+          if(dom.offsetLeft===target){
+              clearInterval(timer)
+          }else{
+            dom.style.left = dom.offsetLeft + speed + 'px';
+          }
+      },15)
+   }
+    // function movein(){
+    //     clearInterval(timer)
+    //     timer = setInterval(function(){
+    //       if(box.offsetLeft===-100){
+    //           clearInterval(timer)
+    //       }else{
+    //           box.style.left = box.offsetLeft - 10 + 'px';
+    //       }
+    //   })
+    // }
+    
+    
+    
+    </script>
+</body>
+</html>

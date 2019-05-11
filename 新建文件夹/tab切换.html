@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 600px;
+            height: 300px;
+            background-color: orange;
+            margin: 200px auto;
+        }
+        #box ul{
+            list-style: none;
+        }
+        #box ul li{
+            background:#ddd;
+            float: left;
+            width: 200px;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            user-select: none;
+        }
+         .clearfix::after{
+            display:block;
+            content: '';
+            height: 0;
+            clear: both;
+        }
+        #box ul li.active{
+            background:red;
+            color: #fff;
+        }
+         #content{
+            width: 600px;
+            height: 250px;
+           background: pink;
+            margin-bottom: 10px;   
+        }
+        #content div{
+            width: 600px;
+            height: 250px;
+            text-align: center;
+            line-height: 250px;
+            display: none;
+        }
+        #content div.on{
+            display: block;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+      <ul id="list" class="clearfix">
+          <li class="active">新闻</li>
+          <li>nba</li>
+          <li>杜兰特</li>
+      </ul>
+      <div id="content">
+      <div class="on">新闻内容</div>
+      <div>nab内容</div>
+      <div>杜兰特内容</div>
+    </div>
+    </div>
+    <script>
+    //获取dom
+    var lis = document.querySelectorAll('#list li');
+    var divs = document.querySelectorAll('#content div');
+    console.log(divs)
+    
+     for(let i=0;i<lis.length;i++){
+         lis[i].addEventListener('click',function(){ 
+            for(let j=0;j<lis.length;j++){
+                 lis[j].className = '';
+                 divs[j].className = '';
+                 console.log(j)
+                 
+            }
+            lis[i].className = 'active';
+            divs[i].className = 'on';
+            
+         })
+     }
+
+
+
+
+
+
+   
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

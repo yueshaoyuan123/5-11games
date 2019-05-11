@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        width: 100px;
+        height: 100px;
+        background: orange;
+        position: absolute;
+        top: 200px;
+        left: 1000px;
+    }
+    #line{
+        width: 2px;
+        height: 1000px;
+        background: red;
+        position: absolute;
+        top: 0;
+        left: 500px;
+    }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <button id="btn">动起来</button>
+    <div id="box">
+
+    </div>
+    <div id="line">
+
+    </div>
+    <script>
+    //获取dom
+    var box = document.getElementById('box')
+    var btn = document.getElementById('btn')
+    btn.addEventListener('click',function(){
+        //调用运动函数
+        move(box,400);
+    })
+    var timer = null;
+    function move(dom,target){
+       clearInterval(timer)
+       
+        timer = setInterval(function(){
+            var speed =(target-dom.offsetLeft)/7;
+            var speed = speed>0?Math.ceil(speed):Math.floor(speed)
+            if(box.offsetLeft===target){
+                clearInterval(timer);
+            }else{
+                dom.style.left = dom.offsetLeft + speed +'px'
+            }
+        },50)
+    }
+    
+    
+    
+    
+    </script>
+</body>
+</html>

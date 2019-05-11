@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        height: 5000px;
+    }
+    #box{
+        width: 100px;
+        height: 150px;
+        background: orange;
+        position: absolute;
+        right:20px;
+        
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+    //获取dom
+    var box = document.getElementById('box');
+    var height = document.documentElement.clientHeight;
+    console.log(height)
+    var boxheight =  (height-150)/2;
+    box.style.top = boxheight+'px'
+    window.onscroll = function(){
+        var distance = document.documentElement.scrollTop;
+        console.log(distance)
+        var aim = boxheight+distance;
+        //调用函数
+        move(box,aim);
+
+    
+    
+    }
+    var timer = null;
+    function move(dom,target){
+       clearInterval(timer)
+       
+        timer = setInterval(function(){
+
+            var speed =(target-dom.offsetTop)/7;
+
+            var speed = speed>0?Math.ceil(speed):Math.floor(speed)
+
+            if(box.offsetTop===target){
+
+                clearInterval(timer);
+
+            }else{
+
+                dom.style.top = dom.offsetTop + speed +'px'
+
+            }
+
+        },50)
+    }
+    
+    
+    </script>
+</body>
+</html>

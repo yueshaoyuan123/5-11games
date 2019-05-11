@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 500px;
+            height: 300px;
+            background-color: orange;
+            margin: 200px auto;
+            padding-top: 1px;
+        }
+
+        #box p {
+            width: 354px;
+            height: 40px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        #box p input {
+            width: 354px;
+            height: 40px;
+            text-indent: 46px;
+        }
+
+        .icon-huiyuan,
+        .icon-42 {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            font-size: 22px;
+            color: #fff;
+            background: #ddd;
+            height: 44px;
+            width: 44px;
+            text-align: center;
+            line-height: 42px;
+            font-weight: bold;
+        }
+
+        .icon-shanchu {
+            position: absolute;
+            right: 4px;
+            top: 11px;
+            display: none;
+        }
+
+        #box p input.btn {
+            border: none;
+            background: red;
+            color: #fff;
+            font-size: 18px;
+            text-indent: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p>
+            <i class="iconfont icon-huiyuan"></i>
+            <input id="text" class="text" type="text">
+            <span id="iconfont" class="iconfont icon-shanchu"></span>
+        </p>
+        <p>
+            <i class="iconfont icon-42"></i>
+            <input id="password" class="password" type="password">
+        </p>
+        <p>
+            <input id="btn" class="btn" type="submit" value="登录">
+        </p>
+    </div>
+    <script>
+    window.onload = function(){
+        //获取输入框dom
+        var text = document.getElementById('text');
+        var iconfont = document.getElementById('iconfont');
+         text.addEventListener('input',function(){
+             if(text.value>0){
+                iconfont.style.display = 'block';
+             }else{
+                iconfont.style.display = 'none';
+             }
+         })
+         iconfont.addEventListener('click',function(){
+             if(text.value>0){
+                 text.value = '';
+                 iconfont.style.display = 'none';
+             }
+         })
+
+
+        console.log(text)
+    }
+    
+    
+    
+    
+    
+    
+    </script>
+      
+    
+</body>
+
+</html>
